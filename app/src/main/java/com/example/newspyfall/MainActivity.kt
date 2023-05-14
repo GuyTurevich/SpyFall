@@ -26,11 +26,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         usersRecyclerView = findViewById(R.id.users_recycler_view)
+        usersRecyclerView.adapter = UserAdapter(userList)
+
         startButton = findViewById(R.id.start_button)
         startButton.setOnClickListener {
             val gameActivity = GameActivity(userList, this)
             gameActivity.startGame()
         }
+
         settingsButton = findViewById(R.id.settings_button)
 
         addPlayerButton = findViewById(R.id.add_button)
@@ -43,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             resetList()
         }
 
-        usersRecyclerView.adapter = UserAdapter(userList)
+
     }
 
     fun deleteUser(position: Int) {
