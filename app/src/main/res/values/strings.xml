@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">מרגלנופל</string>
+    <string name="settings">הגדרות</string>
+    <string name="start">התחל משחק</string>
+    <string name="user_name">שם השחקן</string>
+    <string name="gameName">מרגלנופל</string>
+    <string name="playerList">רשימת שחקנים</string>
+    <string name="addPlayer">הוסף שחקן</string>
+    <string name="reset">איפוס</string>
+    <string name="delete">מחק</string>
+    <string name="enterUserName">הכנס שם</string>
+    <string name="enter_user_name">הכנס שם</string>
+    <string name="add">הוסף</string>
+    <string name="cancel">בטל</string>
+    <string name="show">הצג מקום</string>
+    <string name="understood">הבנתי</string>
+</resources>
