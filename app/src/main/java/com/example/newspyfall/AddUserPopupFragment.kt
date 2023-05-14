@@ -17,12 +17,28 @@ class AddUserDialogFragment : DialogFragment() {
             val inflater = requireActivity().layoutInflater
             val view = inflater.inflate(R.layout.add_user_popup, null)
 
-            // Get the EditText view and set an onClickListener to the add user button
             val userNameInput = view.findViewById<EditText>(R.id.user_name_input)
             val addUserButton = view.findViewById<Button>(R.id.add_user_button)
+            val cancelButton = view.findViewById<Button>(R.id.cancel_button)
+
+            val hebrewLettersRegex = Regex("[א-ת]+")
+
             addUserButton.setOnClickListener {
-                val name = userNameInput.text.toString()
-                (activity as MainActivity).addUser(name)
+                val userName = userNameInput.text.toString().trim() // Remove leading and trailing whitespaces
+
+                if (userName == "") { // will also catch a name with only whitespaces (trim)
+                    userNameInput.error = "שם לא יכול להיות ריק"
+                    return@setOnClickListener
+                } else if (!userName.matches(hebrewLettersRegex)) {
+                    userNameInput.error = "שם יכול להכיל רק אותיות בעברית"
+                    return@setOnClickListener
+                }
+
+                (activity as MainActivity).addUser(userName)
+                dismiss()
+            }
+
+            cancelButton.setOnClickListener {
                 dismiss()
             }
 

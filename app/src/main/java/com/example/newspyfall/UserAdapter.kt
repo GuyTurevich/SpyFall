@@ -3,7 +3,7 @@ package com.example.newspyfall
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.Int
@@ -30,7 +30,7 @@ class UserAdapter(private val userList: List<User>) :
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.player_name)
-        val deleteButton: Button = itemView.findViewById(R.id.delete_button)
+        val deleteButton: ImageButton = itemView.findViewById(R.id.delete_button)
 
         init {
             deleteButton.setOnClickListener {
