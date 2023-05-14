@@ -3,7 +3,10 @@ package com.example.newspyfall
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +29,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         usersRecyclerView = findViewById(R.id.users_recycler_view)
-        usersRecyclerView.adapter = UserAdapter(userList)
+        usersRecyclerView.layoutManager = LinearLayoutManager(this)
+        val adapter = UserAdapter(userList)
+        val callback: ItemTouchHelper.Callback = RecyclerRowMoveCallback(adapter)
+        val touchHelper = ItemTouchHelper(callback)
+        touchHelper.attachToRecyclerView(usersRecyclerView)
+        usersRecyclerView.adapter = adapter
 
         startButton = findViewById(R.id.start_button)
         startButton.setOnClickListener {
@@ -63,4 +71,6 @@ class MainActivity : AppCompatActivity() {
         userList.add(User(name))
         usersRecyclerView.adapter?.notifyItemInserted(userList.size - 1)
     }
+
+
 }
